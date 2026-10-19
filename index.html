@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="StudySaathi AI — Class 9 to MBA and M.Com study resources and photo question solver.">
+<title>StudySaathi AI — पढ़ाई अब आसान</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#" aria-label="StudySaathi home"><span class="logo">S</span><span>StudySaathi <b>AI</b></span></a>
+  <nav><a href="#solver">AI Solver</a><a href="#courses">Courses</a><a href="#resources">PDF Resources</a></nav>
+  <button class="lang" id="langBtn">English</button>
+</header>
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="pulse"></span> YOUR PERSONAL STUDY PARTNER</div>
+    <h1>पढ़ाई को बनाओ<br><span>आसान और स्मार्ट।</span></h1>
+    <p>Class 9 से Graduation, MBA और M.Com तक — सवाल लिखो या फोटो डालो और आसान भाषा में step-by-step explanation पाओ।</p>
+    <div class="hero-actions"><a class="primary" href="#solver">✦ सवाल हल करें</a><a class="secondary" href="#courses">कोर्स देखें ↓</a></div>
+    <div class="trust"><span>✓ Hindi + English</span><span>✓ Photo question scan</span><span>✓ Step-by-step help</span></div>
+  </div>
+  <div class="hero-card">
+    <div class="card-top"><span class="tiny-icon">✦</span><span>STUDYSAATHI AI</span><span class="online" id="statusDot">●</span></div>
+    <div class="chat-question">अगर किसी वस्तु का वेग 20 m/s और समय 5 s है, तो दूरी?</div>
+    <div class="answer-preview"><span class="ai-avatar">S</span><div><b>समाधान का तरीका</b><p>दूरी = वेग × समय<br> = 20 × 5 = <strong>100 m</strong></p></div></div>
+    <div class="card-note">Illustrative example · अपने सवाल को AI Solver में भेजें</div>
+  </div>
+</section>
+
+<section class="stats">
+  <div><b>09–12</b><span>School Classes</span></div><div><b>UG</b><span>Graduation</span></div><div><b>MBA</b><span>Management</span></div><div><b>M.Com</b><span>Commerce</span></div>
+</section>
+
+<section class="section solver-section" id="solver">
+  <div class="section-heading"><div><span class="eyebrow">AI QUESTION SOLVER</span><h2>सवाल की फोटो डालो,<br><span>समझकर सीखो।</span></h2></div><p>Maths, Physics, Chemistry, Biology, Commerce, Accounting, Management और बहुत कुछ।</p></div>
+  <div class="solver-grid">
+    <div class="solver-panel">
+      <label class="field-label" for="level">आपका course / level</label>
+      <select id="level">
+        <option>Class 9</option><option>Class 10</option><option>Class 11</option><option>Class 12</option>
+        <option>Graduation — B.A.</option><option>Graduation — B.Sc.</option><option>Graduation — B.Com</option>
+        <option>BBA / BCA / Other UG</option><option>MBA</option><option>M.Com</option><option>Other</option>
+      </select>
+      <label class="field-label" for="question">सवाल लिखें (optional, अगर फोटो डाल रहे हैं)</label>
+      <textarea id="question" rows="4" placeholder="यहाँ अपना question लिखें…"></textarea>
+      <label class="field-label">या question की फोटो अपलोड / कैमरे से लें</label>
+      <label class="upload-box" for="imageInput" id="uploadBox">
+        <span class="upload-symbol">＋</span><b>फोटो चुनें या कैमरा खोलें</b><small>JPG, PNG, WEBP · अधिकतम 8 MB बेहतर रहेगा</small>
+        <input id="imageInput" type="file" accept="image/*" capture="environment">
+      </label>
+      <div id="imagePreviewWrap" class="preview-wrap hidden"><img id="imagePreview" alt="Question preview"><button id="removeImage" type="button">फोटो हटाएँ ×</button></div>
+      <div class="options-row"><label class="field-label" for="language">उत्तर की भाषा</label><select id="language"><option>Hindi</option><option>English</option><option>Simple Hindi</option></select></div>
+      <button id="solveBtn" class="primary solve-btn"><span>✦</span> AI से समझाएँ <span class="arrow">→</span></button>
+      <p class="fine-print">फोटो/सवाल AI सेवा को भेजा जाएगा। निजी जानकारी वाली तस्वीरें न डालें।</p>
+    </div>
+    <div class="result-panel">
+      <div class="result-head"><div><span class="eyebrow">YOUR EXPLANATION</span><h3>आपका समाधान</h3></div><span class="result-badge" id="resultBadge">READY</span></div>
+      <div id="result" class="result-content"><div class="empty-icon">✦</div><h4>आपका जवाब यहाँ आएगा</h4><p>अपना सवाल लिखें या फोटो अपलोड करें, फिर “AI से समझाएँ” दबाएँ।</p><div class="suggestions"><span>Step-by-step solution</span><span>आसान भाषा</span><span>मुख्य concept</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="courses">
+  <div class="section-heading"><div><span class="eyebrow">LEARN BY LEVEL</span><h2>अपना कोर्स चुनें।</h2></div><p>स्कूल से लेकर higher education तक, अपने subject के अनुसार सीखें।</p></div>
+  <div class="course-grid">
+    <a class="course-card" href="#resources"><span class="course-icon purple">✎</span><span class="course-tag">SCHOOL</span><h3>Class 9–10</h3><p>Maths, Science, Social Science, English</p><span class="card-link">Resources देखें ↗</span></a>
+    <a class="course-card" href="#resources"><span class="course-icon blue">⚛</span><span class="course-tag">SCHOOL</span><h3>Class 11–12</h3><p>Physics, Chemistry, Maths, Biology, Commerce</p><span class="card-link">Resources देखें ↗</span></a>
+    <a class="course-card" href="#resources"><span class="course-icon green">▤</span><span class="course-tag">UNDERGRADUATE</span><h3>Graduation</h3><p>B.A., B.Sc., B.Com और दूसरे UG courses</p><span class="card-link">Resources देखें ↗</span></a>
+    <a class="course-card" href="#resources"><span class="course-icon orange">↗</span><span class="course-tag">POSTGRADUATE</span><h3>MBA</h3><p>Marketing, Finance, HR, Operations, Strategy</p><span class="card-link">Resources देखें ↗</span></a>
+    <a class="course-card" href="#resources"><span class="course-icon pink">₹</span><span class="course-tag">POSTGRADUATE</span><h3>M.Com</h3><p>Accounting, Taxation, Finance, Business Studies</p><span class="card-link">Resources देखें ↗</span></a>
+    <a class="course-card" href="#solver"><span class="course-icon yellow">✦</span><span class="course-tag">ALL SUBJECTS</span><h3>Ask StudySaathi</h3><p>किसी भी subject का सवाल पूछें और explanation लें।</p><span class="card-link">सवाल पूछें ↗</span></a>
+  </div>
+</section>
+
+<section class="section resources" id="resources">
+  <div class="section-heading"><div><span class="eyebrow">STUDY LIBRARY</span><h2>PDF और पढ़ाई के resources</h2></div><p>नीचे official education portals दिए गए हैं। वहाँ उपलब्ध किताबें और सामग्री course के अनुसार खोजें।</p></div>
+  <div class="resource-list">
+    <a class="resource-row" href="https://ncert.nic.in/textbook.php" target="_blank" rel="noopener"><span class="file-icon">PDF</span><span><b>NCERT Textbooks</b><small>Class 1–12 की textbooks — official NCERT portal</small></span><span class="open-link">↗</span></a>
+    <a class="resource-row" href="https://epathshala.nic.in/" target="_blank" rel="noopener"><span class="file-icon">E</span><span><b>ePathshala</b><small>Digital textbooks और learning resources</small></span><span class="open-link">↗</span></a>
+    <a class="resource-row" href="https://www.ignou.ac.in/" target="_blank" rel="noopener"><span class="file-icon">UG</span><span><b>IGNOU</b><small>Open university programmes और study materials</small></span><span class="open-link">↗</span></a>
+    <a class="resource-row" href="https://www.swayam.gov.in/" target="_blank" rel="noopener"><span class="file-icon">MOOC</span><span><b>SWAYAM</b><small>Online courses और higher education learning</small></span><span class="open-link">↗</span></a>
+  </div>
+  <p class="resource-note">ये links official portals पर ले जाते हैं; हर course की PDF एक ही जगह उपलब्ध हो, यह जरूरी नहीं। Copyrighted books की unauthorized copies यहाँ host नहीं की जातीं।</p>
+</section>
+</main>
+<footer><a class="brand" href="#"><span class="logo">S</span><span>StudySaathi <b>AI</b></span></a><p>सीखना आसान बनाओ। रोज़ थोड़ा आगे बढ़ो।</p><span class="footer-small">AI answers can be incorrect. Important answers को textbook/teacher से verify करें.</span></footer>
+<script src="/app.js"></script>
+</body>
+</html>
