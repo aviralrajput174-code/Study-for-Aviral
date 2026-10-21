@@ -1,37 +1,95 @@
-# StudySaathi AI
+# StudySaathi AI — Node.js server
 
-A mobile-first study portal for Class 9–12, undergraduate degrees, MBA and M.Com. It includes an AI question solver that accepts typed questions or a photo of a question.
+This is a starter backend for the StudySaathi AI website. It provides:
 
-## Important: what is real and what needs setup
+- `GET /api/health` — checks that the server is running.
+- `POST /api/ask` — sends a typed question and optional image to the OpenAI API.
+- Static frontend hosting from the `public/` folder.
 
-- The question solver calls the OpenAI API from the server. It is not a fake/demo answer generator.
-- You must provide your own API key and a server host. API use may cost money and is not included with this code.
-- **Never** put the API key in `public/` or in browser JavaScript.
-- The PDF/resource cards link to official education portals; this starter does not host or redistribute textbooks itself.
-- The interface is a starter project, not yet a complete authenticated LMS or a searchable database of every course PDF.
+## 1. Put your website files in the right place
 
-## Run locally
+Copy your existing frontend files into `public/`, for example:
 
-1. Install Node.js 20 or newer.
-2. Copy `.env.example` to `.env`.
-3. Put your API key in `.env` as `OPENAI_API_KEY=...`.
-4. Run `npm install`.
-5. Run `npm start`.
-6. Open `http://localhost:3000`.
+- `public/index.html`
+- `public/style.css`
+- any browser JavaScript and images used by the website
 
-## Deploy
+If your current frontend has a different structure, keep its folders and paths consistent.
 
-Deploy the whole project to a Node.js host that supports environment variables (for example, Render or Railway). Add `OPENAI_API_KEY` and optionally `OPENAI_MODEL` in the host's environment settings. A static-only host such as GitHub Pages cannot run `server.js`, so the AI endpoint will not work there by itself.
+## 2. Install Node.js
 
-## Current features
+Use Node.js 20 or newer. In the project folder, run:
 
-- Responsive mobile layout and Hindi/English interface labels.
-- Camera/file upload for a question photo (browser device picker may offer camera).
-- Typed question + photo in one request.
-- AI-generated step-by-step explanations across science, maths, commerce and management.
-- Study resource links to official portals.
-- Server-side API key handling and basic error messages.
+```bash
+npm install
+```
 
-## Before public launch
+## 3. Set your API key privately
 
-Add rate limiting, user accounts if needed, abuse controls, privacy notice, logging policy, spending limits, accessibility testing and subject-matter review. Don't upload private documents or personal information into the question scanner.
+Copy `.env.example` to `.env` and replace `your_api_key_here` with your own OpenAI API key.
+
+Do not upload `.env` to GitHub. Do not put the API key in HTML or browser JavaScript. The `.gitignore` file excludes `.env`.
+
+API usage may incur charges; check your OpenAI API account's billing and usage limits.
+
+## 4. Run locally
+
+```bash
+npm start
+```
+
+Open `http://localhost:3000`. Check `http://localhost:3000/api/health` to verify the server.
+
+## 5. Connect your existing frontend
+
+Your website's browser JavaScript should send a request to `/api/ask`:
+
+```js
+const response = await fetch("/api/ask", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    question: "Explain photosynthesis",
+    language: "Hindi"
+  })
+});
+const data = await response.json();
+console.log(data.answer);
+```
+
+For image questions, send `image` as a base64 data URL (for example `data:image/jpeg;base64,...`). A file input must be converted to a data URL in browser JavaScript first. Keep request sizes reasonable.
+
+An example helper is provided in `public/ask-example.js`. You may need to adapt it to your existing page's element IDs and design.
+
+## 6. Deploy
+
+Deploy the Node.js project to a Node.js hosting service such as Render or Railway. Add `OPENAI_API_KEY` (and optionally `OPENAI_MODEL`) in that service's environment-variable settings. The host should run `npm install` and `npm start`.
+
+**Important:** GitHub Pages is static hosting and cannot run this `server.js`. You can keep your code in GitHub, but the backend must run on a Node.js host. If the frontend is hosted on a separate domain, configure CORS securely for that exact frontend origin before making browser requests.
+
+## API request example
+
+```json
+{
+  "question": "Explain photosynthesis",
+  "language": "Hindi"
+}
+```
+
+Optional image field:
+
+```json
+{
+  "question": "Solve this question",
+  "image": "data:image/jpeg;base64,....",
+  "language": "Hindi"
+}
+```
+
+Response:
+
+```json
+{
+  "answer": "..."
+}
+```
